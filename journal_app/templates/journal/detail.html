@@ -1,0 +1,9 @@
+{% block content %}
+<section>
+<h1>{{ journal.title }}</h1>
+<p>{{ journal.content }}</p>
+<p>{{ journal.author }}</p>
+<p>Created at: {{ journal.created_at | date:'D d M Y' }}</p>
+<p>Last updated: {{ journal.updated_at | date:'D d M Y' }}</p>
+</section>
+{% endblock content %}
