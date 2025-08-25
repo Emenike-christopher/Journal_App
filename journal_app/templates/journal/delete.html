@@ -1,9 +1,16 @@
+{% extends "journal/base.html" %}
+
+{% block title %}Delete Journal{% endblock %}
+
 {% block content %}
-<h1>Delete a Journal </h1>
-<p>{{ journal.title }}</p>
-<p>{{ journal.content }}</p>
-<form method='post'>
-{% csrf_token %}
-<button type='submit'>Delete</button>
-</form>
-{% endblock content %}
+<div class="card p-4 text-center">
+    <h3 class="fw-bold text-danger">⚠️ Delete Journal</h3>
+    <p>Are you sure you want to delete "<strong>{{ object.title }}</strong>"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger" type="submit">Yes, Delete</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

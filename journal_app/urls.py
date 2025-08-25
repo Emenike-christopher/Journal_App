@@ -1,16 +1,16 @@
 from django.urls import path
 from .views import (
     journalView,
-    journalDetailView, 
+    journalDetailView,
     journalCreateView,
     journalUpdateView,
-    journalDeleteView,
+    journalDeleteView
 )
 
 urlpatterns = [
     path('', journalView.as_view(), name='home'),
     path('journal/<int:pk>/', journalDetailView.as_view(), name='journal-detail'),
-    path('create/', journalCreateView.as_view(), name='create'),
-    path('update/<int:pk>/', journalUpdateView.as_view(), name='update'),
-    path('delete/<int:pk>/', journalDeleteView.as_view(), name='delete'),
+    path('journal/new/', journalCreateView.as_view(), name='journal-create'),
+    path('journal/<int:pk>/edit/', journalUpdateView.as_view(), name='journal-update'),
+    path('journal/<int:pk>/delete/', journalDeleteView.as_view(), name='journal-delete'),
 ]

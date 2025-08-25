@@ -3,7 +3,7 @@ from.models import journal
 
 @admin.register(journal)
 class journalAdmin(admin.ModelAdmin):
-    list_display = ('title', 'content', 'author', 'created_at', 'updated_at')
+    list_display = ('title', 'author', 'created_at', 'updated_at')
     
     def save_model(self, request, obj, form, change):
         if not change:

@@ -1,8 +1,28 @@
+{% extends "journal/base.html" %}
+
+{% block title %}My Journals{% endblock %}
+
 {% block content %}
-<h1> All Journals </h1>
-{% for journal in journals %}
-<p><a href="{% url 'journal-detail' journal.id %}">{{ journal.title }}</a></p>
-{% empty %}
-<h3>There are no journals yet.</h3>
-{% endfor %}
-{% endblock content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">📖 My Journals</h2>
+    <a class="btn btn-primary" href="{% url 'journal-create' %}">+ New Journal</a>
+</div>
+
+{% if journals %}
+    <div class="row">
+        {% for journal in journals %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card h-100 p-3">
+                <h5 class="fw-bold">{{ journal.title }}</h5>
+                <p>{{ journal.content|truncatewords:20 }}</p>
+                <p class="text-muted small">Created: {{ journal.created_at|date:"M d, Y" }}</p>
+                <p class="text-muted small">Updated: {{ journal.updated_at|date:"M d, Y" }}</p>
+                <a href="{% url 'journal-detail' journal.pk %}" class="btn btn-outline-primary btn-sm mt-auto">Read More</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p class="text-muted">No journals yet. Start by creating one.</p>
+{% endif %}
+{% endblock %}

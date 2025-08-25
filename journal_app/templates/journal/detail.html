@@ -1,9 +1,17 @@
+{% extends "journal/base.html" %}
+
+{% block title %}Journal Details{% endblock %}
+
 {% block content %}
-<section>
-<h1>{{ journal.title }}</h1>
-<p>{{ journal.content }}</p>
-<p>{{ journal.author }}</p>
-<p>Created at: {{ journal.created_at | date:'D d M Y' }}</p>
-<p>Last updated: {{ journal.updated_at | date:'D d M Y' }}</p>
-</section>
-{% endblock content %}
+<div class="card p-4">
+    <h3>{{ journal.title }}</h3>
+    <p>{{ journal.content }}</p>
+    <small class="text-muted">Created on: {{ journal.created_at }}</small>
+    
+    <div class="mt-3">
+        <a href="{% url 'journal-update' journal.id %}" class="btn btn-sm btn-primary">Edit</a>
+        <a href="{% url 'journal-delete' journal.id %}" class="btn btn-sm btn-danger">Delete</a>
+        <a href="{% url 'home' %}" class="btn btn-sm btn-secondary">Back</a>
+    </div>
+</div>
+{% endblock %}

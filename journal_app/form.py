@@ -4,7 +4,7 @@ from .models import journal
 class journalCreationForm(forms.ModelForm):
     class Meta:
         model = journal
-        fields = {'title', 'content', 'author',}
+        fields = ('title', 'content', 'author',)
         
    
 
